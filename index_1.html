@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Подготовка к интервью Playrix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: matches the Playrix job pages. White page, black text, one green accent. Centered breadcrumb and title, track buttons as pills, then a single left-aligned text column with bold section headings and dot lists. Deliberately a single light look, like the site. */
+:root {
+  --bg: #FFFFFF;
+  --ink: #000000;
+  --muted: #555555;
+  --faint: #8A8D96;
+  --green: #28D223;
+  --tint: #F9FFFA;
+  --gray: #F3F4F8;
+  --gray-hover: #E7E9F0;
+  --line: #DDE0E8;
+  --font-body: 'Onest', Tahoma, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  padding-block: 56px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+.wrap { max-width: 44.5rem; margin: 0 auto; }
+.bar { max-width: 44.5rem; margin: 0 auto 36px; }
+.logo { display: block; height: 52px; width: auto; max-width: 100%; margin: 0 auto; }
+
+.top { text-align: center; display: grid; gap: 18px; justify-items: center; }
+h1, h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+h1 { margin: 0; }
+.intro { margin: 0; color: var(--muted); font-size: 1.125rem; line-height: 1.5; max-width: 34rem; text-wrap: balance; }
+
+.tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 36px 0 12px; }
+.tab {
+  font: inherit;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 15px 24px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--gray);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.tab:hover { background: var(--gray-hover); }
+.tab[aria-selected="true"] { background: var(--green); color: #FFFFFF; }
+
+.panel { padding-top: 24px; }
+.panel .tagline { margin: 0 0 12px; font-size: 1.5rem; font-weight: 700; line-height: 1.3; text-wrap: balance; }
+.panel p { margin: 0 0 13px; font-size: 1.125rem; line-height: 1.6; }
+.panel .lead { color: var(--muted); }
+h2 { margin: 44px 0 16px; }
+.list, .check-list { list-style: none; margin: 0; padding: 0; }
+.list li { position: relative; padding-left: 20px; margin-bottom: 13px; font-size: 1.0625rem; line-height: 1.5; }
+.list li::before { content: "•"; position: absolute; left: 0; top: 0; }
+.check-list li { margin-bottom: 13px; }
+.check-list label { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-size: 1.0625rem; line-height: 1.5; }
+.check-list input { width: 20px; height: 20px; margin: 0.15rem 0 0; flex: none; accent-color: var(--green); }
+.check-list input:checked + span { color: var(--muted); }
+.panel a { color: var(--ink); font-weight: 700; text-decoration-color: var(--green); text-decoration-thickness: 3px; text-underline-offset: 3px; }
+.panel a:hover { background: var(--tint); }
+
+.setup {
+  background: var(--tint);
+  border: 1px solid rgba(40, 210, 35, 0.4);
+  border-radius: 12px;
+  padding: clamp(16px, 4vw, 24px);
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.setup p { margin: 0 0 10px; font-size: 1.0625rem; line-height: 1.55; }
+.setup p:last-child { margin-bottom: 0; }
+.mono { font-family: var(--font-mono); font-size: 0.875em; overflow-wrap: anywhere; }
+.code { background: var(--gray); border-radius: 12px; margin: 6px 0 12px; min-width: 0; }
+.code-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 6px 16px; }
+.code-head .mono { color: var(--muted); font-size: 0.8125rem; }
+.copy {
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: var(--ink);
+  cursor: pointer;
+  flex: none;
+}
+.copy:hover { background: var(--green); color: #FFFFFF; }
+.code pre { margin: 0; padding: 6px 16px 16px; overflow-x: auto; font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.65; }
+.code code { font-family: inherit; }
+
+@media (max-width: 640px) {
+  body { padding-block: 32px 48px; }
+  .tabs { flex-direction: column; }
+  .tab { width: 100%; text-align: left; }
+  h2 { margin-top: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="bar"><img class="logo" src="logo.png" alt="Playrix"></div>
+
+<main class="wrap">
+  <header class="top">
+    <h1>Как подготовиться к интервью</h1>
+    <p class="intro">Техническое интервью длится 1,5 часа. Подготовка зависит от направления: открой свою вкладку.</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Направление">
+    <button class="tab" role="tab" id="tab-game" data-track="game" aria-selected="true" aria-controls="panel-game" type="button">Game Engineer</button>
+    <button class="tab" role="tab" id="tab-cross-product" data-track="cross-product" aria-selected="false" aria-controls="panel-cross-product" tabindex="-1" type="button">AI Engineer (Cross-product)</button>
+    <button class="tab" role="tab" id="tab-platform" data-track="platform" aria-selected="false" aria-controls="panel-platform" tabindex="-1" type="button">AI Engineer (Platform)</button>
+  </div>
+
+  <section class="panel" role="tabpanel" id="panel-game" data-track="game" aria-labelledby="tab-game">
+    <p class="tagline">Создаёшь игровые фичи с AI, от идеи до миллионов игроков</p>
+    <p class="lead">Работаешь в игровой команде и делаешь фичи и ивенты в рамках AI SDLC: AI помогает с исследованием, дизайном, кодом, тестами и ревью, а ты управляешь процессом, принимаешь инженерные решения и отвечаешь за результат.</p>
+
+    <h2>Что нужно сделать до интервью</h2>
+    <p>Чтобы на встрече мы не тратили время на настройку, пожалуйста, подготовь рабочее окружение к дате интервью:</p>
+    <ul class="check-list">
+      <li><label><input type="checkbox" id="g1" data-key="g1"><span>Установи окружение: инструкцию можно найти <a href="https://plrx.me/Eg2xWk7YMU" target="_blank" rel="noopener">по ссылке</a></span></label></li>
+      <li><label><input type="checkbox" id="g2" data-key="g2"><span>Убедись, что проект собирается и запускается, как описано в README</span></label></li>
+      <li><label><input type="checkbox" id="g3" data-key="g3"><span>Подключи ключ с токенами LLM. Ключ с доступом к токенам мы отдельно отправим, инструкция по настройке ниже</span></label></li>
+    </ul>
+
+    <h2>Как будет проходить интервью</h2>
+    <p>Во время встречи тебе нужно будет демонстрировать экран и решать задачи интервьюеров.</p>
+
+    <h2>Как работаем с ИИ</h2>
+    <ul class="list">
+      <li>На сессии тебе доступен ИИ-инструмент (Claude Code или другая удобная для тебя LLM)</li>
+      <li>Пользоваться ассистентом можно и нужно, это часть рабочего процесса</li>
+      <li>Но ассистент — это инструмент. Решения, архитектура и обоснования — твои. Мы оцениваем тебя, а не ассистента</li>
+    </ul>
+
+    <h2>Настройка LLM для интервью</h2>
+    <div class="setup">
+      <p>Рекомендуемая среда разработки: VS Code + Claude Code Extension (но можешь использовать этот ключ для другой удобной для тебя LLM).</p>
+      <p>Твой ключ: его отдельно отправит рекрутер.</p>
+      <p>Настройка Claude в файле <span class="mono">~/.claude/settings.json</span> выглядит так:</p>
+      <div class="code">
+        <div class="code-head"><span class="mono">~/.claude/settings.json</span><button class="copy" id="copy-game" type="button">Скопировать</button></div>
+        <pre><code>{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://litellm.playrix.com",
+    "ANTHROPIC_AUTH_TOKEN": "sk-ваш ключ",
+    "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
+    "API_FORCE_IDLE_TIMEOUT": "0"
+  }
+}</code></pre>
+      </div>
+      <p>Вместо <span class="mono">sk-ваш ключ</span> подставь ключ, который пришлёт рекрутер.</p>
+    </div>
+  </section>
+
+  <section class="panel" role="tabpanel" id="panel-cross-product" data-track="cross-product" aria-labelledby="tab-cross-product" hidden>
+    <p class="tagline">Строишь AI-системы для разработки игр</p>
+    <p class="lead">Создаёшь AI-агентов и скиллы, которыми игровые команды пользуются каждый день: проектируешь поведение агентов, работаешь с контекстом и инструментами и измеряешь, действительно ли агент ускоряет разработку и улучшает её качество.</p>
+
+    <h2>О чём поговорим</h2>
+    <ul class="list">
+      <li>Инженерные основы разработки</li>
+      <li>Контекст и промпт-инжиниринг</li>
+      <li>Устройство LLM и агентов</li>
+      <li>Процессы AI-разработки (AI SDLC)</li>
+      <li>Системный дизайн и тестирование</li>
+      <li>Live-промптинг</li>
+    </ul>
+
+    <h2>Как работаем с ИИ</h2>
+    <p>На сессии тебе доступен ИИ-инструмент (Claude Code или другая удобная для тебя LLM). Инструкция по настройке ниже, лучше настроить её до начала встречи.</p>
+    <p>Пользоваться ассистентом можно и нужно, это часть рабочего процесса.</p>
+
+    <h2>Настройка LLM для интервью</h2>
+    <div class="setup">
+      <p>Рекомендуемая среда разработки: VS Code + Claude Code Extension (но можешь использовать этот ключ для другой удобной для тебя LLM).</p>
+      <p>Твой ключ: его отдельно отправит рекрутер.</p>
+      <p>Настройка Claude в файле <span class="mono">~/.claude/settings.json</span> выглядит так:</p>
+      <div class="code">
+        <div class="code-head"><span class="mono">~/.claude/settings.json</span><button class="copy" id="copy-cross-product" type="button">Скопировать</button></div>
+        <pre><code>{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://litellm.playrix.com",
+    "ANTHROPIC_AUTH_TOKEN": "sk-ваш ключ",
+    "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
+    "API_FORCE_IDLE_TIMEOUT": "0"
+  }
+}</code></pre>
+      </div>
+      <p>Вместо <span class="mono">sk-ваш ключ</span> подставь ключ, который пришлёт рекрутер.</p>
+    </div>
+  </section>
+
+  <section class="panel" role="tabpanel" id="panel-platform" data-track="platform" aria-labelledby="tab-platform" hidden>
+    <p class="tagline">Строишь фундамент, на котором работают все агенты компании</p>
+    <p class="lead">Строишь инфраструктуру, благодаря которой агенты работают надёжно, быстро и доступны каждой команде: запуск в облаке, работа с несколькими LLM, интеграции с внутренними системами через MCP, управление контекстом, кешированием, доступами и стоимостью.</p>
+
+    <h2>Формат встречи</h2>
+    <p>Лайв-кодинг, ~1.5 часа.</p>
+    <p>Ты пишешь решение с нуля: стек, структуру, инструменты выбираешь полностью сам. Мы наблюдаем и по ходу задаём вопросы — в первую очередь про выбор технологий и твой подход.</p>
+
+    <h2>Как работаем с ИИ</h2>
+    <ul class="list">
+      <li>На сессии тебе доступен ИИ-инструмент (Claude Code или другая удобная для тебя LLM). Инструкция по настройке ниже</li>
+      <li>Пользоваться ассистентом можно и нужно, это часть рабочего процесса</li>
+      <li>Но ассистент — это инструмент. Решения, архитектура и обоснования — твои. Мы оцениваем тебя, а не ассистента</li>
+    </ul>
+
+    <h2>Что будет происходить</h2>
+    <ul class="list">
+      <li>Получаешь задание и начинаешь решать</li>
+      <li>Шаришь экран, думаешь вслух — нам важно видеть ход мысли, а не только результат</li>
+      <li>Мы задаём уточняющие вопросы: почему такой стек, почему такой механизм, какие альтернативы рассматривал, что бы поменял в проде</li>
+      <li>Вопросы задавай свободно — уточнять условия это нормально</li>
+    </ul>
+
+    <h2>Что оцениваем</h2>
+    <ul class="list">
+      <li>Архитектурные решения и умение их обосновать</li>
+      <li>Декомпозицию задачи и приоритизацию под таймбокс</li>
+      <li>Работу с незнакомым API и документацией — как быстро разбираешься</li>
+      <li>Обработку ошибок и корнер-кейсов</li>
+      <li>Качество работы с ИИ-инструментом</li>
+    </ul>
+
+    <h2>Организационное</h2>
+    <ul class="list">
+      <li>Можно гуглить, ходить в документацию, пробовать и ошибаться</li>
+      <li>Важнее ход мысли и обоснованность решений, чем «добить» всё до конца</li>
+      <li>Не успеть всё — нормально. О том, что не успел, расскажешь словами</li>
+    </ul>
+
+    <h2>Настройка LLM для интервью</h2>
+    <div class="setup">
+      <p>Рекомендуемая среда разработки: VS Code + Claude Code Extension (но можешь использовать этот ключ для другой удобной для тебя LLM).</p>
+      <p>Твой ключ: его отдельно отправит рекрутер.</p>
+      <p>Настройка Claude в файле <span class="mono">~/.claude/settings.json</span> выглядит так:</p>
+      <div class="code">
+        <div class="code-head"><span class="mono">~/.claude/settings.json</span><button class="copy" id="copy-platform" type="button">Скопировать</button></div>
+        <pre><code>{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://litellm.playrix.com",
+    "ANTHROPIC_AUTH_TOKEN": "sk-ваш ключ",
+    "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
+    "API_FORCE_IDLE_TIMEOUT": "0"
+  }
+}</code></pre>
+      </div>
+      <p>Вместо <span class="mono">sk-ваш ключ</span> подставь ключ, который пришлёт рекрутер.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+  var panels = [].slice.call(document.querySelectorAll('[role="tabpanel"]'));
+  var ids = tabs.map(function (t) { return t.dataset.track; });
+
+  function show(id, focus) {
+    if (ids.indexOf(id) < 0) id = ids[0];
+    tabs.forEach(function (t) {
+      var on = t.dataset.track === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      if (on && focus) t.focus();
+    });
+    panels.forEach(function (p) { p.hidden = p.dataset.track !== id; });
+  }
+  function go(id, focus) {
+    show(id, focus);
+    try { location.hash = id; } catch (e) {}
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { go(t.dataset.track); });
+    t.addEventListener('keydown', function (e) {
+      var j = -1;
+      if (e.key === 'ArrowRight') j = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') j = 0;
+      else if (e.key === 'End') j = tabs.length - 1;
+      if (j > -1) { e.preventDefault(); go(tabs[j].dataset.track, true); }
+    });
+  });
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
+  show(location.hash.slice(1));
+
+  [].slice.call(document.querySelectorAll('input[type="checkbox"][data-key]')).forEach(function (b) {
+    try { if (localStorage.getItem('prep:' + b.dataset.key) === '1') b.checked = true; } catch (e) {}
+    b.addEventListener('change', function () {
+      try { localStorage.setItem('prep:' + b.dataset.key, b.checked ? '1' : '0'); } catch (e) {}
+    });
+  });
+
+  [].slice.call(document.querySelectorAll('.copy')).forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pre = btn.closest('.code').querySelector('pre');
+      function reset() { setTimeout(function () { btn.textContent = 'Скопировать'; }, 2000); }
+      function fallback() {
+        try {
+          var r = document.createRange();
+          r.selectNodeContents(pre);
+          var s = window.getSelection();
+          s.removeAllRanges();
+          s.addRange(r);
+        } catch (e) {}
+        btn.textContent = 'Выделено, скопируй вручную';
+        reset();
+      }
+      try {
+        navigator.clipboard.writeText(pre.textContent).then(function () {
+          btn.textContent = 'Скопировано';
+          reset();
+        }, fallback);
+      } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
